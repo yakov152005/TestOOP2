@@ -2,7 +2,7 @@ public class MainEx1 {
 	public static void main(String[] args) {
 		Worker[] worker = {
 				new Worker("yakov", 28,"Yakov"),
-				new Worker("shaliv", 24,"Yakov"),
+				new Worker("shilo", 24,"Yakov"),
 				new Worker("daniel", 23,"Yakov"),
 				new Worker("ido", 22,"Yakov"),
 				new Worker("amit", 28,"Yakov"),
@@ -18,7 +18,7 @@ public class MainEx1 {
 		worker[4].addWorker(worker[6]);
 		worker[4].addWorker(worker[7]);
 		System.out.println(worker[0].countTotalManagedWorker());
-		System.out.println(worker[1].isCEO());
+		System.out.println(worker[0].isCEO());
 
 	}
 }
