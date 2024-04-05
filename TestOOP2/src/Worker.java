@@ -48,13 +48,8 @@ public class Worker {
 		return name;
 	}
 
-	public boolean isCEO() {
-		for (int i = 0; i < workers.length; i++) {
-			if (workers[i].getName() != manager){
-				return true;
-			}
-		}
-		return false;
+        public boolean isCEO() {
+		return !isManager() && isSeniorManager();
 	}
 
 
