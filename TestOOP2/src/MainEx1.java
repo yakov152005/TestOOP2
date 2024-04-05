@@ -12,10 +12,10 @@ public class MainEx1 {
 				new Worker("itay", 21,worker[1]),
 		};
 		Worker[] worker3 = {
-				new Worker("SHAKED", 32,worker[0]),
-				new Worker("LIAT", 41,worker[0]),
-				new Worker("eden", 42,worker[1]),
-				new Worker("noa", 19,worker[1])
+				new Worker("SHAKED", 32,worker2[0]),
+				new Worker("LIAT", 41,worker2[1]),
+				new Worker("eden", 42,worker2[2]),
+				new Worker("noa", 19,worker2[3])
 		};
 		ceo.addSubordinate(worker[0]);
 		ceo.addSubordinate(worker[1]);
@@ -25,10 +25,10 @@ public class MainEx1 {
 		worker[1].addSubordinate(worker2[2]);
 		worker[1].addSubordinate(worker2[3]);
 
-		worker[0].addSubordinate(worker3[0]);
-		worker[0].addSubordinate(worker3[1]);
-		worker[1].addSubordinate(worker3[2]);
-		worker[1].addSubordinate(worker3[3]);
+		worker2[0].addSubordinate(worker3[0]);
+		worker2[1].addSubordinate(worker3[1]);
+		worker2[2].addSubordinate(worker3[2]);
+		worker2[3].addSubordinate(worker3[3]);
 
 		System.out.println(ceo.countTotalManagedWorkers());
 		System.out.println(ceo.isCEO());
