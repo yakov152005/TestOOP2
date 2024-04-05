@@ -58,14 +58,5 @@ public class Worker {
 	}
 
 
-
-	public String toString(){
-		String res = "";
-		res+= getClass().getSimpleName() + "---> " + "Name: " + this.name +", Workers --> " ;
-		for (int i = 0; i < workers.length; i++) {
-			System.out.print(workers[i]);
-		}
-		return res;
-	}
 }
 
