@@ -1,57 +1,58 @@
 public class Worker {
+	private int birthYear;
 	private String name;
-	private int yearsOld;
-	private Worker[] workers;
-	private String manager;
+	private Worker directManager;
+	private Worker[] subordinates;
 
-	public Worker(String name, int yearsOld,String manager){
+	public Worker( String name,int birthYear, Worker directManager) {
+		this.birthYear = birthYear;
 		this.name = name;
-		this.yearsOld = yearsOld;
-		this.manager = manager;
-		workers = new Worker[0];
+		this.directManager = directManager;
+		this.subordinates = new Worker[0];
 	}
-	public void addWorker(Worker worker){
-		Worker[] temp = new Worker[workers.length +1];
-		for (int i = 0; i < workers.length; i++) {
-			temp[i] = workers[i];
-		}
-		temp[workers.length] = worker;
-		workers = temp;
-	}
+
 	public boolean isManager() {
-		return workers.length >0;
+		return subordinates.length > 0;
 	}
 
 	public boolean isSeniorManager() {
-		return isManager() && workers[0].isManager();
+		return directManager != null && directManager.isManager();
 	}
 
-	public boolean isMinorWorker(){
-		if (workers.length ==0){
+	public boolean isMinorWorker() {
+		return subordinates.length == 0;
+	}
+
+	public int countTotalManagedWorkers() {
+		int count = 0;
+		for (Worker subordinate : subordinates) {
+			count += 1 + subordinate.countTotalManagedWorkers();
+		}
+		return count;
+	}
+
+	public boolean isCEO() {
+		if (directManager == null) {
+			for (Worker subordinate : subordinates) {
+				if (subordinate.directManager != this) {
+					return false; 
+				}
+				if (!subordinate.isCEO()) {
+					return false; 
+				}
+			}
 			return true;
 		}
-		return false;
+		return false; 
 	}
-
-	public int countTotalManagedWorker() {
-		int countWorker = 0;
-		if (isManager()) {
-			countWorker++; // סופר את המנהל עצמו
-			for (int i = 0; i < workers.length; i++) {
-				countWorker += workers[i].countTotalManagedWorker(); // סופר את העובדים מתחתיו
-			}
+	public void addSubordinate(Worker subordinate) {
+		Worker[] newSubordinates = new Worker[subordinates.length + 1];
+		for (int i = 0; i < subordinates.length; i++) {
+			newSubordinates[i] = subordinates[i];
 		}
-		return countWorker;
+		newSubordinates[subordinates.length] = subordinate;
+		subordinates = newSubordinates;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-        public boolean isCEO() {
-		return !isManager() && isSeniorManager();
-	}
-
 
 }
 
