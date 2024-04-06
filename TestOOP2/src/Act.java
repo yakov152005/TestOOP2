@@ -37,12 +37,14 @@ public class Act {
 				}
 
 			boolean actorExists = false;
-			for (Actor actor : updatedActors) {
+			for (int i = 0; i < updatedActors.size(); i++) {
+				 Actor actor = updatedActors.get(i);
 				if (actor != null && actor.getName().equals(toad.getName()) && actor.getAge() == toad.getAge()) {
 					actorExists = true;
 					break;
 				}
 			}
+			boolean actorExists = false;
 
 			if (!actorExists) {
 				updatedActors[updatedActors.length - 1] = new Actor(toad.getName(), toad.getAge(), toad.getActs());
