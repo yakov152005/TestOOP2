@@ -10,7 +10,7 @@ public class Triangle {
 	}
 	public int type(){
 		int res = 0;
-		if (this.angleA + this.angleB + this.angleC < 90){
+		if (this.angleA <90 &&this.angleB < 90&& this.angleC < 90){
 			res = 1;
 		} else if (180 - this.angleA == 90 || 180 - this.angleB == 90
 				|| 180 - this.angleC == 90   ){
